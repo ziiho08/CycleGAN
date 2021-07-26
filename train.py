@@ -38,11 +38,11 @@ parser.add_argument("--channels", type=int, default=1, help="number of image cha
 parser.add_argument("--sample_interval", type=int, default=1000, help="interval between saving generator outputs")
 parser.add_argument("--checkpoint_interval", type=int, default=-1, help="interval between saving model checkpoints")
 parser.add_argument("--n_residual_blocks", type=int, default=6, help="number of residual blocks in generator")
-parser.add_argument("--lambda_cyc", type=float, default=5.0, help="cycle loss weight")
+parser.add_argument("--lambda_cyc", type=float, default=10.0, help="cycle loss weight")
 parser.add_argument("--lambda_id", type=float, default=5.0, help="identity loss weight")
 parser.add_argument("--folder_name", type=str, default="default_mask", help="name of the dataset")
 parser.add_argument("--folder_num", type=int, default=10, help="number of the dataset")
-parser.add_argument('--GPU_NUM', type=int, default=1, help='number of channels of output data')
+parser.add_argument('--GPU_NUM', type=int, default=0, help='number of channels of output data')
 parser.add_argument('--Save_name', type=str, default="try1")
 opt = parser.parse_args()
 print(opt)
@@ -56,7 +56,7 @@ print('\t' * 3 + f'{torch.cuda.get_device_name(GPU_NUM)}')
 # Create sample and checkpoint directories
 os.makedirs("images/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
 os.makedirs("saved_models/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
-os.makedirs("loss/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
+#os.makedirs("loss/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
 # Losses
 criterion_GAN = torch.nn.MSELoss() # Try BCE Loss,MSELoss
 criterion_cycle = torch.nn.L1Loss()
@@ -86,7 +86,7 @@ if opt.epoch != 0:
     G_AB.load_state_dict(torch.load("saved_models/%s%s/G_AB_%d.pth" % (opt.dataset_name,opt.Save_name, opt.epoch)))
     G_BA.load_state_dict(torch.load("saved_models/%s%s/G_BA_%d.pth" % (opt.dataset_name,opt.Save_name, opt.epoch)))
     D_A.load_state_dict(torch.load("saved_models/%s%s/D_A_%d.pth" % (opt.dataset_name,opt.Save_name, opt.epoch)))
-    D_B.load_state_dict(torch.load("saved_models/%s%se/D_B_%d.pth" % (opt.dataset_name,opt.Save_name, opt.epoch)))
+    D_B.load_state_dict(torch.load("saved_models/%s%s/D_B_%d.pth" % (opt.dataset_name,opt.Save_name, opt.epoch)))
 else:
     # Initialize weights
     G_AB.apply(weights_init_normal)
@@ -118,10 +118,6 @@ Tensor = torch.cuda.FloatTensor if cuda else torch.Tensor
 fake_A_buffer = ReplayBuffer()
 fake_B_buffer = ReplayBuffer()
 
-# Image transformations
-
-
-# Training data loader
 
 dataloader = DataLoader(
     ImageDataset("./", folder_name=opt.folder_name, folder_num=opt.folder_num),
@@ -129,20 +125,10 @@ dataloader = DataLoader(
     shuffle=True,
     num_workers=opt.n_cpu,
 )
-# Test data loader
-val_dataloader = DataLoader(
-    ImageDataset("./", folder_name=opt.folder_name, folder_num=opt.folder_num),
-    batch_size=5,
-    shuffle=True,
-    num_workers=1,
-)
-
-
-# dataloader = dataloader[:2000]
 
 def sample_images(batches_done):
-    """Saves a generated sample from the test set"""
-    imgs = next(iter(val_dataloader))
+
+    imgs = next(iter(dataloader))
     G_AB.eval()
     G_BA.eval()
     real_A = Variable(imgs["A"].type(Tensor))
@@ -157,7 +143,6 @@ def sample_images(batches_done):
     # Arange images along y-axis
     image_grid = torch.cat((real_A, fake_B, real_B, fake_A), 1)
     save_image(image_grid, "images/%s%s/%s.png" % (opt.dataset_name, opt.Save_name, batches_done), normalize=False)
-
 
 # ----------
 #  Training
