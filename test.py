@@ -24,8 +24,9 @@ parser.add_argument("--sample_interval", type=int, default=1, help="interval bet
 parser.add_argument("--n_residual_blocks", type=int, default=6, help="number of residual blocks in generator")
 parser.add_argument("--folder_num", type=int, default=10, help="number of the dataset")
 parser.add_argument('--GPU_NUM', type=int, default=0, help='number of channels of output data')
-parser.add_argument('--Save_name', type=str, default="try1")
+parser.add_argument('--model_name', type=str, default="MSE_id_5.0_")
 parser.add_argument('--model_num', type=int, default=190)
+parser.add_argument('--Save_name', type=str, default="try1")
 
 opt = parser.parse_args()
 
@@ -65,7 +66,7 @@ Tensor = torch.cuda.FloatTensor if cuda else torch.Tensor
 
 test_dataloader = DataLoader(
     ImageDataset("./", folder_name = opt.folder_name,folder_num= opt.folder_num),
-    batch_size=1,
+    batch_size=opt.batch_size,
     shuffle=True,
     num_workers=1,
 )
@@ -86,7 +87,7 @@ def sample_images(batches_done):
     fake_B = make_grid(fake_B, nrow=5, normalize=True)
     # Arange images along y-axis
     image_grid = torch.cat((real_A, fake_B, real_B, fake_A), 1)
-    save_image(image_grid,  "test_images/%s/%s.png" % (opt.Save_name, iter_done), normalize=False)
+    save_image(image_grid,  "test_images/%s/%s.png" % (opt.model_name, iter_done), normalize=False)
 
 # ----------
 #  Test

@@ -44,6 +44,7 @@ parser.add_argument("--folder_name", type=str, default="default_mask", help="nam
 parser.add_argument("--folder_num", type=int, default=10, help="number of the dataset")
 parser.add_argument('--GPU_NUM', type=int, default=0, help='number of channels of output data')
 parser.add_argument('--Save_name', type=str, default="try1")
+
 opt = parser.parse_args()
 print(opt)
 GPU_NUM = opt.GPU_NUM
@@ -56,7 +57,8 @@ print('\t' * 3 + f'{torch.cuda.get_device_name(GPU_NUM)}')
 # Create sample and checkpoint directories
 os.makedirs("images/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
 os.makedirs("saved_models/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
-#os.makedirs("loss/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
+os.makedirs("loss/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
+
 # Losses
 criterion_GAN = torch.nn.MSELoss() # Try BCE Loss,MSELoss
 criterion_cycle = torch.nn.L1Loss()
@@ -285,5 +287,3 @@ for epoch in range(opt.epoch, opt.n_epochs):
     torch.save(G_BA.state_dict(), "saved_models/%s%s/G_BA_%d.pth" % (opt.dataset_name,opt.Save_name, epoch))
     torch.save(D_A.state_dict(), "saved_models/%s%s/D_A_%d.pth" % (opt.dataset_name, opt.Save_name,epoch))
     torch.save(D_B.state_dict(), "saved_models/%s%s/D_B_%d.pth" % (opt.dataset_name, opt.Save_name,epoch))
-
-
