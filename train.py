@@ -42,7 +42,7 @@ parser.add_argument("--n_residual_blocks", type=int, default=6, help="number of 
 parser.add_argument("--lambda_cyc", type=float, default=10.0, help="cycle loss weight")
 parser.add_argument("--lambda_id", type=float, default=5.0, help="identity loss weight")
 parser.add_argument("--folder_name", type=str, default="mask", help="name of the dataset")
-parser.add_argument("--folder_num", type=int, default=20, help="number of the dataset")
+parser.add_argument("--folder_num", type=int, default=1, help="number of the dataset")
 parser.add_argument('--GPU_NUM', type=int, default=0, help='number of channels of output data')
 parser.add_argument('--Save_name', type=str, default="try1")
 
