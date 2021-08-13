@@ -49,8 +49,8 @@ if cuda:
     G_BA = G_BA.cuda()
 
 # Load pretrained models
-G_AB.load_state_dict(torch.load("saved_models/%s%s/G_AB_%d.pth" % (opt.dataset_name, opt.model_name, opt.model_num)))
-G_BA.load_state_dict(torch.load("saved_models/%s%s/G_BA_%d.pth" % (opt.dataset_name, opt.model_name, opt.model_num)))
+G_AB.load_state_dict(torch.load("saved_models/%s%s/G_AB_%d.pth" % (opt.dataset_name, opt.model_name, opt.model_num),map_location='cuda:0'))
+G_BA.load_state_dict(torch.load("saved_models/%s%s/G_BA_%d.pth" % (opt.dataset_name, opt.model_name, opt.model_num),map_location='cuda:0'))
 
 # Set model's test mode
 G_AB.eval()
