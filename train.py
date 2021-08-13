@@ -58,7 +58,8 @@ print('\t' * 3 + f'{torch.cuda.get_device_name(GPU_NUM)}')
 # Create sample and checkpoint directories
 os.makedirs("images/fake_B/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
 os.makedirs("saved_models/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
-os.makedirs("loss/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
+os.makedirs("loss/", exist_ok=True)
+os.makedirs("measure/", exist_ok=True)
 os.makedirs("images/gtd/%s%s" % (opt.dataset_name,opt.Save_name), exist_ok=True)
 # Losses
 criterion_GAN = torch.nn.MSELoss() # Try BCE Loss,MSELoss
@@ -131,14 +132,6 @@ dataloader = DataLoader(
 
 gt_list = sorted(glob.glob(os.path.join("./", f'gtd_data/{opt.folder_num}') + "/*.*"))
 gt_list = natsort.natsorted(gt_list)
-
-# def gtd_load(gt_list):
-#     for i in range(0, len(gt_list)):
-#         img_path = gt_list[i]
-#         gt_open = Image.open(img_path).convert('L')
-#         gtd = np.asarray(gt_open)
-#     return gtd
-# gtd = gtd_load(gt_list)
 
 # ----------
 #  Training
