@@ -23,6 +23,11 @@ $ cd CycleGAN
 ```
 $ python3 train.py
 ```
+- Test a model
+```
+$ python3 test.py 
+```
+To use our trained model, download 
 - Download a Powerline dataset :
 
 
