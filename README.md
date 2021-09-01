@@ -25,9 +25,9 @@ $ python3 train.py
 ```
 - Test a model
 ```
-$ python3 test.py 
+$ python3 test.py --
 ```
-To use our trained model, download 
+To use our trained model, download Saved_model file. 
 - Download a Powerline dataset :
 
 
