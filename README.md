@@ -9,3 +9,10 @@ To solve this problem, we tried to apply the CycleGAN to this problem and the go
 
 ### Structure of CycleGAN
 ![Sturcture](https://user-images.githubusercontent.com/68531659/131618803-9d914725-3afc-4d5d-b0b8-3998ac66a3e3.png)
+
+### Getting Started
+## Installation
+- Clone this :
+  git clone
+
+
