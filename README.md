@@ -13,6 +13,16 @@ To solve this problem, we tried to apply the CycleGAN to this problem and the go
 ### Getting Started
 ## Installation
 - Clone this :
-  git clone
+
+```
+$ git clone https://github.com/ziiho08/CycleGAN.git
+$ cd CycleGAN
+```
+
+- Train a model
+```
+$ python3 train.py
+```
+- Download a Powerline dataset :
 
 
