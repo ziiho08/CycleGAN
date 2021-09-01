@@ -33,6 +33,7 @@ $ python3 test.py --model_num 20
 
 
 ### Result of CycleGAN
+CycleGAN Results on Powerline dataset
 
 ![Result](https://user-images.githubusercontent.com/68531659/131627234-9695f4f6-354c-4cdd-a177-f9f0f0841915.png)
 
