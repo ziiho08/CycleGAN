@@ -32,3 +32,4 @@ $ python3 test.py --model_num 20
 - Download a Powerline dataset :
 
 
+### Result of CycleGAN
