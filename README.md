@@ -1,4 +1,4 @@
-# CycleGAN
+# Powerline dataset and CycleGAN in Pytorch 
 
 ### CycleGAN with Powerline dataset
 
