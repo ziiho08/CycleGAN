@@ -24,7 +24,7 @@ $ cd CycleGAN
 $ python3 train.py
 ```
 - Test a model
-To use our trained model, download Saved_model file and choose model number.
+To use our trained model, download Saved_model file and choose model number(epochs).
 ```
 $ python3 test.py --model_num 20
 ```
