@@ -24,10 +24,11 @@ $ cd CycleGAN
 $ python3 train.py
 ```
 - Test a model
+To use our trained model, download Saved_model file and choose model number.
 ```
-$ python3 test.py --
+$ python3 test.py --model_num 20
 ```
-To use our trained model, download Saved_model file. 
+
 - Download a Powerline dataset :
 
 
