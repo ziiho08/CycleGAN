@@ -34,7 +34,7 @@ $ python3 test.py --model_num 20
 
 ### Result of CycleGAN
 
-![Result](https://user-images.githubusercontent.com/68531659/131626828-3f131ca4-f252-4689-b702-c3aac43d6570.png)
+![Result](https://user-images.githubusercontent.com/68531659/131627234-9695f4f6-354c-4cdd-a177-f9f0f0841915.png)
 
 (a) : Original 
 (b) : Visual Mask
