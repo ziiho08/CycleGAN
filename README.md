@@ -10,8 +10,9 @@ To solve this problem, we tried to apply the CycleGAN to this problem and the go
 ### Structure of CycleGAN
 ![Sturcture](https://user-images.githubusercontent.com/68531659/131618803-9d914725-3afc-4d5d-b0b8-3998ac66a3e3.png)
 
-### Getting Started
-## Installation
+## Getting Started
+
+### Installation
 - Clone this :
 
 ```
@@ -32,13 +33,15 @@ $ python3 test.py --model_num 20
 - Download a Powerline dataset :
 
 
-### Result of CycleGAN
-CycleGAN Results on Powerline dataset
-
-![Result](https://user-images.githubusercontent.com/68531659/131627234-9695f4f6-354c-4cdd-a177-f9f0f0841915.png)
+## Result of CycleGAN
+**CycleGAN Results on Powerline dataset**
 
 (a) : Original 
 (b) : Visual Mask
 (c) : Ground Truth 
 (d) : Generated 
+
+
+![Result](https://user-images.githubusercontent.com/68531659/131627234-9695f4f6-354c-4cdd-a177-f9f0f0841915.png)
+
 
