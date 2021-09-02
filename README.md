@@ -30,7 +30,7 @@ To use our trained model, download Saved_model file and choose model number(epoc
 $ python3 test.py --model_num 20
 ```
 
-- Download a Powerline dataset :
+- Download a Powerline dataset : https://drive.google.com/drive/folders/1yF_sehTntKfiDyH3GGkj1c9IIsgm46IC
 
 
 ## Result of CycleGAN
